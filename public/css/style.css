@@ -72,3 +72,7 @@ html, body {
   margin-top: 10px;
   min-height: 18px; 
 }
+
+#logo-login{
+  width:50px ;
+}
