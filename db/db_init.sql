@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS laptrinhweb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE laptrinhweb;
+CREATE DATABASE IF NOT EXISTS stugate CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE stugate;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Thêm 1 user demo (username: test, password: 123456)
 INSERT INTO users (username, password)
-VALUES ('test','123456')
+VALUES ('admin','123456')
 ON DUPLICATE KEY UPDATE username = username;
