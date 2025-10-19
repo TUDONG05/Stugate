@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
 
     const user = await userModel.findByUsername(username);
     if (user && user.password === password) {
-      // Ở đây demo trả success. Thực tế: tạo session hoặc JWT.
+      
       return res.json({ success: true, message: 'Đăng nhập thành công!' });
     }
 
