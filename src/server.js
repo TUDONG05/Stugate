@@ -30,7 +30,10 @@ app.use('/', loginRouter);
 
 app.use('/', dashboardRoutes);
 
+const authRoutes = require('./routes/logout');
+app.use('/', authRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on http://${hostname}:${port}`);
 });
+
