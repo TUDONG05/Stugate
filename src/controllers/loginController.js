@@ -1,13 +1,13 @@
 // controllers/authController.js
 const adminModel = require('../models/QLModel');
 const teacherModel = require('../models/GVModel');
-const sinhVienModel = require('../models/SVModel');
+const studentModel = require('../models/SVModel');
 
 // ánh xạ userType -> model
 const models = {
   admin: adminModel,
   teacher: teacherModel,
-  student: sinhVienModel,
+  student: studentModel,
 };
 
 // ánh xạ userType -> dashboard
@@ -38,8 +38,18 @@ const getLogin = async (req, res) => {
 
     if (user && user.matKhau === password) {
       console.log('Login successful!');
+
+      // Lưu thông tin user vào session
+      req.session.user = {
+        id: user.maSV || user.maGV || user.maQL,
+        name: user.tenSV || user.tenGV || user.tenQL,
+        userType,
+      };
+
+      // Điều hướng đến dashboard tương ứng
       return res.redirect(dashboards[userType]);
     }
+
 
     console.log('Login failed: wrong username or password');
     return res.render('login', { error: 'Sai tên đăng nhập hoặc mật khẩu.' });

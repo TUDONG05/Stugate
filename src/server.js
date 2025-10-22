@@ -18,10 +18,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 configViewEngine(app);
 
 // Routes
+const session = require('express-session');
+
+app.use(session({
+  secret: 'secret_key_example',  // để trong .env nếu cần
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.use('/', loginRouter);
 
 app.use('/', dashboardRoutes);
+
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on http://${hostname}:${port}`);

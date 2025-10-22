@@ -1,17 +1,15 @@
-// src/routes/dashboardRoutes.js
+// src/routes/dashboard.js
 const express = require('express');
 const router = express.Router();
+const {
+  getDashboardSinhVien,
+  getDashboardGiangVien,
+  getDashboardQuanLy
+} = require('../controllers/homeController');
 
-router.get('/dashboard/sinhvien', (req, res) => {
-  res.render('dashboard_sinhvien');
-});
-
-router.get('/dashboard/teacher', (req, res) => {
-  res.render('dashboard_teacher');
-});
-
-router.get('/dashboard/admin', (req, res) => {
-  res.render('dashboard_admin');
-});
+// trùng với đường dẫn authController dùng
+router.get('/sv/trangchu', getDashboardSinhVien);
+router.get('/gv/trangchu', getDashboardGiangVien);
+router.get('/ql/trangchu', getDashboardQuanLy);
 
 module.exports = router;
