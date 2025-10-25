@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Sinh Viên</title>
+  <link rel="stylesheet" href="/css/dashboard_sv.css">
+</head>
+<body>
+  <header>
+    <img src="/images/logo.png" alt="Logo hệ thống" id="logo_navbar">
+    <h2>STUGATE</h2>
+    <div class="tt">
+      <h4 id="sv_hoTen"><%= giangVien.hoTen %></h4>
+      <form action="/logout" method ="get">
+        <button type="submit" id="logout_button" >Đăng xuất</button>
+      </form>
+    </div>
+  </header>
+
+  <section>
+    <nav>
+        <ul class="menu">
+
+          <li>
+            <img src="/images/home_icon.png" alt="home_icon">
+            <a href="">Trang chủ</a>
+          </li>
+
+          <li>
+            <img src="/images/lhct_icon.png" alt="home_icon">
+            <a href="">Lớp học của tôi</a>
+          </li>
+
+          <li>
+            <img src="/images/nd_icon.png" alt="home_icon">
+            <a href="">Nhập điểm</a>
+          </li>
+
+          <li>
+            <img src="/images/qltl_icon.png" alt="home_icon">
+            <a href="">Quản lý tài liệu</a>
+          </li>
+
+          <li>
+            <img src="/images/gtt_icon.png" alt="home_icon">
+            <a href="">Gửi thông báo</a>
+          </li>
+
+          <li>
+            <img src="/images/thongke_icon.png" alt="home_icon">
+            <a href="">Thống kê</a>
+          </li>
+
+
+        </ul>
+    </nav>
+    
+  </section>
+</body>
+</html>
