@@ -1,12 +1,16 @@
-require('dotenv').config();
-const express = require('express');
+//D:\HocTap\Stugate\Stugate\src\server.js
 const path = require('path');
+const dotenvResult = require('dotenv').config({ path: path.join(__dirname,'..' ,'.env') });
+
+//require('dotenv').config();
+const express = require('express');
+//const path = require('path');
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME || 'localhost';
 const configViewEngine = require('./config/viewEngine');
 const loginRouter = require('./routes/login');
-const dashboardRoutes = require('./routes/dashboard')
+const dashboardRoutes = require('./routes/dashboard');
 // Middleware parse body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,7 +31,6 @@ app.use(session({
 }));
 
 app.use('/', loginRouter);
-
 app.use('/', dashboardRoutes);
 
 const authRoutes = require('./routes/logout');

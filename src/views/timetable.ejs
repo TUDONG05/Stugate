@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard Sinh Viên</title>
-  <link rel="stylesheet" href="/css/dashboard_sv.css">
+  <link rel="stylesheet" href="/css/timetable.css">
+
 </head>
 <body>
   <header>
     <img src="/images/logo.png" alt="Logo hệ thống" id="logo_navbar">
     <h2>STUGATE</h2>
     <div class="tt">
-      <h4 id="sv_hoTen"><%= sinhVien.hoTen %></h4>
+     <h4 id="sv_hoTen"><%= user.name %></h4>
       <form action="/logout" method ="get">
         <button type="submit" id="logout_button" >Đăng xuất</button>
       </form>
@@ -19,7 +20,7 @@
     </div>
   </header>
 
-  <section>
+  <section class="warp">
     <nav>
         <ul class="menu">
 
@@ -60,7 +61,25 @@
 
         </ul>
     </nav>
-    
+<div class="content">
+    <table class="timetable">
+        <thead>
+            <tr>
+                <th>Thứ</th>
+                <th>Ngày</th>
+                <th>Sáng</th>
+                <th>Chiều</th>
+                <th>Tối</th>
+            </tr>
+        </thead>
+        <tbody id="timetable-body">
+            <tr class="loading-row">
+                <td colspan="5">Đang tải dữ liệu thời khóa biểu...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
   </section>
+  <script src="/js/timetable.js"></script>
 </body>
 </html>

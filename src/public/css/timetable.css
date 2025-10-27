@@ -1,0 +1,281 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    display: flex;
+    flex-direction: column;
+    font-family:sans-serif
+    
+}
+#logo_navbar{
+    width: 100px;
+}
+header{
+    display: flex;
+    /* background-color: aqua; */
+    /* border: 1px solid black; */
+    position: relative;
+    
+}
+header h2{
+    line-height: 100px;
+    
+    font-size:30px ;
+    margin-left: 20px;
+    
+
+}
+
+.tt{
+    /* border: 1px solid black; */
+    position: absolute;
+    right: 30px;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    
+}
+#logout_button{
+    width: 100px;
+    background-color: white;
+    height: 35px;
+    margin-top: 15px;
+}
+#sv_hoTen{
+    margin-top: 10px;
+}
+
+
+section{
+    background-color: #D6D6D6;
+    height: 100vh;
+
+}
+nav{
+    background-color: #D6D6D6;
+    height: 100vh;
+}
+
+.menu li img{
+    /* width: 35px; */
+    height: 25px;
+    padding-left: 20px;
+    align-self: center;
+}
+.menu li a{
+    color: black;
+    text-decoration: none;
+}
+.menu li {
+    /* border: 1px solid black; */
+    
+    white-space: nowrap;
+    display: flex;
+    
+}
+nav{
+    width: 350px;
+    border-right: 1px solid black;
+    height: 100vh;
+}
+.menu li a {
+    
+    align-self: center;
+    padding: 15px 40px;
+    width:100%;
+}
+.menu li:hover{
+    background-color:gold ;
+}
+.timetable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+section {
+    display: flex;
+    flex: 1;
+    background-color: #D6D6D6;
+}
+/* === THỜI KHÓA BIỂU === */
+.content {
+    flex: 1;
+    padding: 30px;
+    overflow-x: auto;
+}
+
+.timetable {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-size: 14px;
+}
+
+.timetable thead {
+    background: linear-gradient(135deg, #00695c, #004d40);
+    color: white;
+}
+
+.timetable th {
+    padding: 18px 12px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timetable th:first-child { width: 10%; }
+.timetable th:nth-child(2) { width: 14%; }
+.timetable th:nth-child(3),
+.timetable th:nth-child(4),
+.timetable th:nth-child(5) { width: 25%; }
+
+.timetable td {
+    padding: 16px 12px;
+    vertical-align: top;
+    border-bottom: 1px solid #eee;
+    background-color: #fdfdfd;
+}
+
+.timetable td:first-child {
+    font-weight: 700;
+    text-align: center;
+    background-color: #f0f7f6;
+    color: #00695c;
+    font-size: 15px;
+}
+
+.timetable td:nth-child(2) {
+    text-align: center;
+    font-size: 0.95em;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Ô môn học */
+.slot {
+    background-color: #f0f7f6;
+    border-left: 4px solid #00695c;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.slot:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    background-color: #e8f4f3;
+}
+
+.slot strong {
+    display: block;
+    font-size: 0.95em;
+    color: #004d40;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.slot span {
+    display: block;
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Phân biệt buổi */
+.timetable td:nth-child(3) .slot { border-left-color: #4caf50; } /* Sáng - Xanh lá nhạt */
+.timetable td:nth-child(4) .slot { border-left-color: #ff9800; } /* Chiều - Cam */
+.timetable td:nth-child(5) .slot { border-left-color: #0288d1; } /* Tối - Xanh dương */
+
+.timetable td:nth-child(3) { background-color: #f9fdf9; }
+.timetable td:nth-child(4) { background-color: #fffbf0; }
+.timetable td:nth-child(5) { background-color: #f0f8ff; }
+
+/* Loading */
+.loading-row td {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-style: italic;
+    background-color: #f9f9f9 !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    nav { width: 280px; }
+    .content { padding: 20px; }
+}
+
+@media (max-width: 992px) {
+    section { flex-direction: column; }
+    nav { width: 100%; height: auto; border-right: none; border-bottom: 1px solid #ddd; }
+    .menu { display: flex; overflow-x: auto; padding: 10px 0; }
+    .menu li { min-width: 160px; justify-content: center; }
+}
+
+.timetable th,
+.timetable td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top; /* Căn nội dung lên trên */
+}
+
+.timetable th {
+    background-color: #00695c; /* Giống màu header ảnh */
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+.timetable td:first-child { /* Cột "Thứ" */
+    font-weight: 700;
+    text-align: center;
+    width: 8%;
+}
+.timetable td:nth-child(2) { /* Cột "Ngày" */
+    text-align: center;
+    font-size: 0.9em;
+    width: 12%;
+}
+
+/* Định dạng cho ô chứa lịch học */
+.slot-data {
+    font-size: 0.9em;
+}
+.slot-data p {
+    margin: 0 0 8px 0;
+    padding: 5px;
+    background-color: #f7f7f7;
+    border-left: 3px solid #00695c;
+    border-radius: 3px;
+}
+.slot-data strong {
+    color: #004d40;
+    display: block; /* Tên môn xuống 1 dòng */
+}
+.slot-data span {
+    color: #555;
+    display: block; /* Thông tin phòng/GV xuống 1 dòng */
+    font-size: 0.9em;
+}
+
+/* Hiển thị khi đang tải */
+.loading-row td {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+}
+
