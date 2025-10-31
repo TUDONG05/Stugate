@@ -3,7 +3,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Sinh Viên</title>
+  <title>Thời khóa biểu</title>
   <link rel="stylesheet" href="/css/timetable.css">
 
 </head>
@@ -73,13 +73,45 @@
             </tr>
         </thead>
         <tbody id="timetable-body">
-            <tr class="loading-row">
-                <td colspan="5">Đang tải dữ liệu thời khóa biểu...</td>
+          <% if (Object.keys(groupedData).length > 0) { %>
+            <% Object.keys(groupedData).forEach(thu => { %>
+              <tr>
+                <td>Thứ <%= thu %></td>
+                <td>-</td>
+                <td>
+                  <% if (groupedData[thu].sang.length > 0) { %>
+                    <%= groupedData[thu].sang.join('<br>') %>
+                  <% } else { %>
+                    -
+                  <% } %>
+                </td>
+                <td>
+                  <% if (groupedData[thu].chieu.length > 0) { %>
+                    <%= groupedData[thu].chieu.join('<br>') %>
+                  <% } else { %>
+                    -
+                  <% } %>
+                </td>
+                <td>
+                  <% if (groupedData[thu].toi.length > 0) { %>
+                    <%= groupedData[thu].toi.join('<br>') %>
+                  <% } else { %>
+                    -
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="5">Không có dữ liệu thời khóa biểu.</td>
             </tr>
+          <% } %>
         </tbody>
+        
+        
     </table>
 </div>
   </section>
-  <script src="/js/timetable.js"></script>
+
 </body>
 </html>

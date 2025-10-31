@@ -29,20 +29,20 @@ const getLogin = async (req, res) => {
     }
 
     const model = models[userType];
-    console.log('Selected model:', model);
+    console.log('Chọn loại người dùng', model);
     if (!model) return res.render('login', { error: 'Loại người dùng không hợp lệ.' });
 
-    console.log('Calling findByID...');
+    console.log('Đang tìm người dùng theo thông tin');
     const user = await model.findByID(loginId);
-    console.log('User from DB:', user);
+    console.log('Người dùng từ bảng:', user);
 
     if (user && user.matKhau === password) {
-      console.log('Login successful!');
+      console.log('Đăng nhập thành công');
 
       // Lưu thông tin user vào session
       req.session.user = {
         id: user.maSV || user.maGV || user.maQL,
-        name: user.tenSV || user.tenGV || user.tenQL,
+        name: user.hoTen || user.hoTen || user.hoTen,
         userType,
       };
 
