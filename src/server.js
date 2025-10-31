@@ -11,6 +11,9 @@ const hostname = process.env.HOST_NAME || 'localhost';
 const configViewEngine = require('./config/viewEngine');
 const loginRouter = require('./routes/login');
 const dashboardRoutes = require('./routes/dashboard');
+const session = require('express-session');
+const authRoutes = require('./routes/logout');
+const timeTableRouter = require('./routes/timetableRoute')
 // Middleware parse body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -22,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 configViewEngine(app);
 
 // Routes
-const session = require('express-session');
+
 
 app.use(session({
   secret: 'secret_key_example',  // để trong .env nếu cần
@@ -32,9 +35,9 @@ app.use(session({
 
 app.use('/', loginRouter);
 app.use('/', dashboardRoutes);
-
-const authRoutes = require('./routes/logout');
 app.use('/', authRoutes);
+
+app.use('/',timeTableRouter)
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on http://${hostname}:${port}`);

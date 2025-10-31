@@ -1,14 +1,20 @@
-// models/sinhVienModel.js
-const db = require('../config/db');
-
-async function findByID(maSV) {
-  const [rows] = await db.query('SELECT * FROM sinhvien sv WHERE sv.maSV =?', [maSV]);
-  return rows[0] || null;
-}
-
-async function getTimetable(maSV) {
-  const query = `
     SELECT 
+  lich.maLichHoc AS maLichHoc,
+  lich.thuTrongTuan AS thuTrongTuan,
+  lich.tietHoc AS tietHoc,
+  lich.phongHoc AS phongHoc,
+  loph.tenLop AS tenLop,
+  mh.tenMH AS tenMH,
+  mh.soTinChi AS soTinChi
+  FROM DangKyHoc dkh
+  JOIN LopHoc loph ON dkh.maLop = loph.maLop
+  JOIN LichHoc lich ON loph.maLichHoc = lich.maLichHoc
+  JOIN MonHoc mh ON loph.maMH = mh.maMH
+  WHERE dkh.maSV = 'sv001'
+  ORDER BY lich.thuTrongTuan, lich.tietHoc;
+
+
+  SELECT 
       lich.maLichHoc AS id,
       lich.thuTrongTuan AS thuTrongTuan,
       lich.tietHoc AS tietHoc,
@@ -25,14 +31,3 @@ async function getTimetable(maSV) {
     WHERE dkh.maSV = 'sv001'
     ORDER BY lich.thuTrongTuan, lich.tietHoc;
   
-
-  `;
-  const [rows] = await db.query(query, [maSV]);
-  console.log("🧩 Timetable data từ DB:", rows);
-  console.log("🧩 Số lượng dòng:", rows.length);
-
-  return rows;
-}
-
-
-module.exports = { findByID,getTimetable};
